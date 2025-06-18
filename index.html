@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TotalPass - Fee Alto + Subsidios Inteligentes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TotalPass Calculator</h1>
+            <p>Calculadora de Fee Alto + Subsidios Inteligentes</p>
+        </div>
+
+        <div class="content">
+            <div class="calculator-section">
+                <h2>🎯 Configuración Estratégica</h2>
+                
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="cliente">Cliente:</label>
+                        <input type="text" id="cliente" placeholder="Nombre del cliente">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="propuesta">Versión Base:</label>
+                        <select id="propuesta">
+                            <option value="4.5">Propuesta 4.5 (Fee base: $110/vida)</option>
+                            <option value="4.75">Propuesta 4.75 (Fee base: $105/vida)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="presupuestoTotal">Presupuesto Total Mensual (MXN):</label>
+                        <input type="number" id="presupuestoTotal" value="350000" min="10000" step="1000">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="empleadosTotal">Total de Empleados:</label>
+                        <input type="number" id="empleadosTotal" value="500" min="5">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="porcentajePremium">% Empleados con Planes TP4/TP5/TP6:</label>
+                        <input type="number" id="porcentajePremium" value="25" min="5" max="100" step="5">
+                        <small style="color: var(--color-gray-500); font-size: var(--text-xs); margin-top: 5px; display: block;">
+                            💡 Estimación realista del uso de planes premium
+                        </small>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="estrategiaSubsidio">Estrategia de Subsidios:</label>
+                        <select id="estrategiaSubsidio">
+                            <option value="proporcional">Proporcional al precio (Recomendado)</option>
+                            <option value="uniforme">Uniforme para todos</option>
+                            <option value="personalizado">Personalizado por plan</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="subsidios-section">
+                    <h4 style="color: var(--color-secondary-green-extradark); font-weight: var(--font-weight-bold); margin-bottom: 15px;">
+                        🎯 Subsidios por Plan (MXN)
+                    </h4>
+                    <p style="font-size: var(--text-sm); color: var(--color-gray-700); margin-bottom: 15px;">
+                        Ajusta el subsidio por plan. TP4, TP5, TP6 tienen subsidios más altos por defecto.
+                    </p>
+                    <div class="subsidios-grid">
+                        <div class="subsidio-plan">
+                            <div class="plan-info">
+                                <span class="plan-name">TP1</span>
+                                <span class="plan-price">Precio: $279</span>
+                            </div>
+                            <input type="number" class="subsidio-input" id="subsidioTP1" value="100" min="0" max="279" step="25">
+                        </div>
+                        <div class="subsidio-plan">
+                            <div class="plan-info">
+                                <span class="plan-name">TP2</span>
+                                <span class="plan-price">Precio: $579</span>
+                            </div>
+                            <input type="number" class="subsidio-input" id="subsidioTP2" value="200" min="0" max="579" step="25">
+                        </div>
+                        <div class="subsidio-plan">
+                            <div class="plan-info">
+                                <span class="plan-name">TP3</span>
+                                <span class="plan-price">Precio: $999</span>
+                            </div>
+                            <input type="number" class="subsidio-input" id="subsidioTP3" value="300" min="0" max="999" step="25">
+                        </div>
+                        <div class="subsidio-plan premium">
+                            <div class="plan-info">
+                                <span class="plan-name">TP4 🔥</span>
+                                <span class="plan-price">Precio: $1,549</span>
+                            </div>
+                            <input type="number" class="subsidio-input" id="subsidioTP4" value="800" min="0" max="1549" step="50">
+                        </div>
+                        <div class="subsidio-plan premium">
+                            <div class="plan-info">
+                                <span class="plan-name">TP5 🔥</span>
+                                <span class="plan-price">Precio: $2,049</span>
+                            </div>
+                            <input type="number" class="subsidio-input" id="subsidioTP5" value="1000" min="0" max="2049" step="50">
+                        </div>
+                        <div class="subsidio-plan premium">
+                            <div class="plan-info">
+                                <span class="plan-name">TP6 🔥</span>
+                                <span class="plan-price">Precio: $2,449</span>
+                            </div>
+                            <input type="number" class="subsidio-input" id="subsidioTP6" value="1200" min="0" max="2449" step="50">
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn" onclick="calcularMegaEstrategia()">🚀 Calcular Estrategia Optimizada</button>
+                
+                <div class="results" id="resultados" style="display: none;">
+                    <h3>📊 Resultados de la MEGA Estrategia</h3>
+                    <div id="contenidoResultados"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
